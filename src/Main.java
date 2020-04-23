@@ -1,22 +1,18 @@
-import pattern.singleton.guessGame.GuessGame;
+import house.House;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        GuessGame game = GuessGame.getInstance();
+        House house = new House.HouseBuilder()
+                .buildWalls("walls")
+                .buildFloors("floors")
+                .buildRoof("roof")
+                .buildWindows("windows")
+                .buildDoors("doors")
+                .buildGarage("garage")
+                .build();
 
-        game.play();
-
-        int score = game.getScore();
-
-        GuessGame anotherGameReference = GuessGame.getInstance();
-
-        if(game == anotherGameReference) {
-            System.out.println("Singleton!");
-            if(score == anotherGameReference.getScore()) {
-                System.out.println("I punkty się zgadzają!");
-            }
-        }
+        System.out.println(house);
     }
 }
