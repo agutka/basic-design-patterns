@@ -1,18 +1,21 @@
-import units.*;
+import flyweight.Destroyer;
+import flyweight.Rifleman;
+import flyweight.TeslaTank;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Factory blueFactory = new BlueFactory();
-        Factory redFactory = new RedFactory();
+        List<Object> activeUnits = new ArrayList<>();
 
-        MechanizedUnit redTank = redFactory.createMechanizedUnit(UnitType.TANK);
-        InfantryUnit redInfantry = redFactory.createInfantryUnit(UnitType.RIFLEMAN);
-        AirUnit redHelicopter = redFactory.createAirUnit(UnitType.HELICOPTER);
+        for(int i =0; i<1000; i++) {
+            activeUnits.add(new TeslaTank(0,0));
+            activeUnits.add(new Rifleman(0,0));
+            activeUnits.add(new Destroyer(0,0));
+        }
 
-        MechanizedUnit blueTank = blueFactory.createMechanizedUnit(UnitType.TANK);
-        InfantryUnit blueInfantry = blueFactory.createInfantryUnit(UnitType.RIFLEMAN);
-        AirUnit blueHelicopter = blueFactory.createAirUnit(UnitType.HELICOPTER);
     }
 }
